@@ -22,6 +22,7 @@ public class Layouts extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit out of application
 //		this.setResizable(false); // prevent frame from being resized
 		this.setSize(w, h); // sets the x-dimension and y-dimension of frame
+		this.setLocationRelativeTo(null);
 		this.setVisible(true); // make frame visible
 		this.setLayout(null); // set layout
 		
