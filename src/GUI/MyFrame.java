@@ -1,24 +1,59 @@
 package GUI;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-//import java.awt.Dimension;
-import java.awt.Font;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.Border;
+
+//import java.awt.BorderLayout;
+//import java.awt.FlowLayout;
+//import java.awt.Color;
+//import java.awt.Dimension;
+//import java.awt.Font;
+//
+//import javax.swing.BorderFactory;
+//import javax.swing.ButtonGroup;
+//import javax.swing.ImageIcon;
+//import javax.swing.JButton;
+//import javax.swing.JCheckBox;
+//import javax.swing.JFrame;
+//import javax.swing.JLabel;
+//import javax.swing.JLayeredPane;
+//import javax.swing.JOptionPane;
+//import javax.swing.JPanel;
+//import javax.swing.JRadioButton;
+//import javax.swing.JTextField;
+//import javax.swing.border.Border;
 
 public class MyFrame extends JFrame {
 
 //	Constructor
 	public MyFrame(int w, int h) {
 		Border border = BorderFactory.createLineBorder(Color.black, 5);
+		
+// ---- JOptionPane ----
+		
+//		JOptionPane.showMessageDialog(null, "This is some useless info", "title", JOptionPane.PLAIN_MESSAGE);
+//		JOptionPane.showMessageDialog(null, "This is more some useless info :D", "title", JOptionPane.INFORMATION_MESSAGE);
+//		JOptionPane.showMessageDialog(null, "Really?", "title", JOptionPane.QUESTION_MESSAGE);
+//		JOptionPane.showMessageDialog(null, "You're computer has a VIRUS!", "title", JOptionPane.WARNING_MESSAGE);
+//		JOptionPane.showMessageDialog(null, "Call tech support NOW OR ELSE!!!", "title", JOptionPane.ERROR_MESSAGE);
+
+//		int answer = JOptionPane.showConfirmDialog(null, "Do you even code?", "This is my title", JOptionPane.YES_NO_CANCEL_OPTION);
+//		String name = JOptionPane.showInputDialog("what is your name?: ");
+		
+		String[] responses = {"No, you're awesome", "Thank you!", "*blush*"};
+		ImageIcon icon = new ImageIcon("bup.png");
+		JOptionPane.showOptionDialog(
+				null,
+				"You are awesome!",
+				"Secret message",
+				JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.INFORMATION_MESSAGE,
+				icon,
+				responses,
+				0);
 		
 // ---- JLayeredPane ----
 		JLabel lb1 = new JLabel();
@@ -60,6 +95,7 @@ public class MyFrame extends JFrame {
 		label.setBorder(border); // set border of label
 		label.setBounds(100, 50, 300, 300); // set x,y, position within frame as well as dimensions
 		
+		
 // ---- JPanel ----
 		JLabel rLb = this.createLabel("", true);
 		JLabel bLb = this.createLabel("", true);
@@ -87,15 +123,29 @@ public class MyFrame extends JFrame {
 			btn.setVisible(false);
 			btt.setEnabled(true);
 		});
+
+// ---- JRadioButton ----
+//		this.setLayout(new FlowLayout());
+//		this.pack();
+		JRadioButton rB1 = this.createRadioButton();
+		JRadioButton rB2 = this.createRadioButton();
+		JRadioButton rB3 = this.createRadioButton();
+		ButtonGroup group = new ButtonGroup();
+		group.add(rB1);
+		group.add(rB2);
+		group.add(rB3);
+//		this.add(rB1);
+//		this.add(rB2);
+//		this.add(rB3);
 		
 // ---- JFrame ----
 		this.setTitle("GUI"); // sets title of frame
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit out of application
 		this.setResizable(false); // prevent frame from being resized
 		this.setSize(w, h); // sets the x-dimension and y-dimension of frame
+		this.setLocationRelativeTo(null); // centering the window
 		this.setVisible(true); // make frame visible
 		this.setLayout(null); // set layout
-
 
 //		Add label
 		this.add(label);
@@ -115,7 +165,6 @@ public class MyFrame extends JFrame {
 		this.setIconImage(img.getImage()); // change icon of frame
 //		this.getContentPane().setBackground(new Color(0xa8a8a8)); // change color of background
 	}
-	
 	
 //	create JLabel
 	public JLabel createLabel(String text, Boolean bool) {
@@ -143,7 +192,18 @@ public class MyFrame extends JFrame {
 		return label;
 	}
 	
-//	Create button
+//	create JPanel
+	public JPanel createPanel(int x, int y, int w, int h, Color color) {
+		JPanel panel = new JPanel();
+		panel.setBackground(color); // set background of panel
+		panel.setBounds(x, y, w, h); // set bounds of panel
+		panel.setLayout(new BorderLayout()); // set layout of panel
+//		panel.setPreferredSize(new Dimension(w, h));
+		
+		return panel;
+	}
+	
+//	Create JButton
 	public JButton createButton(int x, int y, int w, int h, String text) {
 		JButton button = new JButton();
 		button.setBounds(x, y, w, h);
@@ -161,16 +221,63 @@ public class MyFrame extends JFrame {
 		
 		return button;
 	}
-	
-//	create JPanel
-	public JPanel createPanel(int x, int y, int w, int h, Color color) {
-		JPanel panel = new JPanel();
-		panel.setBackground(color); // set background of panel
-		panel.setBounds(x, y, w, h); // set bounds of panel
-		panel.setLayout(new BorderLayout()); // set layout of panel
-//		panel.setPreferredSize(new Dimension(w, h));
-		
-		return panel;
-	}
 
+//	Create JTextField
+	public JTextField createTextField() {
+		JTextField textField = new JTextField();
+		textField.setPreferredSize(new Dimension(250, 50));
+		textField.setFont(new Font("Arial", Font.PLAIN, 20));
+//		textField.setForeground(Color.black);
+//		textField.setBackground(Color.white);
+//		textField.setCaretColor(Color.white);
+//		textField.setText("username");
+//		textField.setText(false);
+		
+		return textField;
+	}
+	
+//	Create JCheckBox
+	public JCheckBox createCheckBox() {
+		ImageIcon xIcon = new ImageIcon("bup.png");
+		ImageIcon checkIcon = new ImageIcon("logo.png");
+		
+		JCheckBox checkBox = new JCheckBox();
+		checkBox.setText("I'm not a robot");
+		checkBox.setFocusable(false);
+		checkBox.setFont(new Font("Consolas", Font.PLAIN, 35));
+		checkBox.setIcon(xIcon);
+		checkBox.setSelectedIcon(checkIcon);
+//		checkBox.isSelected()
+		
+		return checkBox;
+	}
+	
+//	Create JRadioButton
+	public JRadioButton createRadioButton() {
+//		ImageIcon icon = new ImageIcon("bup.png");
+		JRadioButton radioButton = new JRadioButton();
+//		radioButton.setIcon(icon);
+		
+		return radioButton;
+	}
+	
+//	Create JComboBox
+	public JComboBox createComboBox(String[] array) {
+//		this.setLayout(new FlowLayout());
+//		this.pack();
+		
+		JComboBox comboBox = new JComboBox(array);
+//		comboBox.addActionListener(e -> System.out.println(comboBox.getSelectedItem());
+//		comboBox.setEditable(true);
+//		System.out.println(comboBox.getItemCount());
+//		comboBox.addItem("horse");
+//		comboBox.insertItemAt("pig", 0);
+//		comboBox.setSelectedIndex(0);
+//		comboBox.removeItem("cat");
+//		comboBox.removeItemAt(0);
+//		comboBox.removeAllItems();
+		
+		return comboBox;
+	}
+	
 }
