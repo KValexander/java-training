@@ -25,6 +25,9 @@ public class StartPage implements ActionListener {
 		JButton colorChooserDemoButton = this.createButton(10, 260, 200, 40, "ColorChooser demo");
 		JButton keyListenerDemoButton = this.createButton(10, 310, 200, 40, "KeyListener demo");
 		JButton mouseListenerDemoButton = this.createButton(220, 10, 200, 40, "MouseListener demo");
+		JButton dragAndDropButton = this.createButton(220, 60, 200, 40, "Drag And Drop");
+		JButton keyBindingDemoButton = this.createButton(220, 110, 200, 40, "KeyBinding demo");
+		JButton g2DGraphicButton = this.createButton(220, 160, 200, 40, "2D Graphic demo");
 		
 		myFrameButton.addActionListener(e -> {
 			frame.dispose();
@@ -59,6 +62,18 @@ public class StartPage implements ActionListener {
 			frame.dispose();
 			new MouseListenerDemo();
 		});
+		dragAndDropButton.addActionListener(e -> {
+			frame.dispose();
+			new DragAndDrop();
+		});
+		keyBindingDemoButton.addActionListener(e -> {
+			frame.dispose();
+			new KeyBindingDemo();
+		});
+		g2DGraphicButton.addActionListener(e -> {
+			frame.dispose();
+			new g2DGraphic();
+		});
 		
 		frame.add(myFrameButton);
 		frame.add(layoutsButton);
@@ -68,6 +83,9 @@ public class StartPage implements ActionListener {
 		frame.add(colorChooserDemoButton);
 		frame.add(keyListenerDemoButton);
 		frame.add(mouseListenerDemoButton);
+		frame.add(dragAndDropButton);
+		frame.add(keyBindingDemoButton);
+		frame.add(g2DGraphicButton);
 		
 	}
 	
