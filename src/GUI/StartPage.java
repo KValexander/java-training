@@ -28,6 +28,7 @@ public class StartPage implements ActionListener {
 		JButton dragAndDropButton = this.createButton(220, 60, 200, 40, "Drag And Drop");
 		JButton keyBindingDemoButton = this.createButton(220, 110, 200, 40, "KeyBinding demo");
 		JButton g2DGraphicButton = this.createButton(220, 160, 200, 40, "2D Graphic demo");
+		JButton g2DAnimationButton = this.createButton(220, 210, 200, 40, "2D Animation demo");
 		
 		myFrameButton.addActionListener(e -> {
 			frame.dispose();
@@ -74,6 +75,10 @@ public class StartPage implements ActionListener {
 			frame.dispose();
 			new g2DGraphic();
 		});
+		g2DAnimationButton.addActionListener(e -> {
+			frame.dispose();
+			new g2DAnimation();
+		});
 		
 		frame.add(myFrameButton);
 		frame.add(layoutsButton);
@@ -86,6 +91,7 @@ public class StartPage implements ActionListener {
 		frame.add(dragAndDropButton);
 		frame.add(keyBindingDemoButton);
 		frame.add(g2DGraphicButton);
+		frame.add(g2DAnimationButton);
 		
 	}
 	
