@@ -8,6 +8,10 @@ import javax.swing.*;
 
 public class StartPage implements ActionListener {
 	
+	public static void main(String[] args) {
+		new StartPage();
+	}
+	
 	JFrame frame = new JFrame("GUI");
 	
 	public StartPage() {
